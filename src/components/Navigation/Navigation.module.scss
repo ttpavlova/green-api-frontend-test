@@ -1,0 +1,33 @@
+@use "../../styles/mixins" as mixins;
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 77px;
+  min-width: 77px;
+  padding: var(--spacing-l) var(--spacing-xs);
+  background: var(--background-primary);
+  border-right: 1px solid var(--divider-secondary);
+  z-index: 1;
+}
+
+.allChatsBtn,
+.settingsBtn {
+  @include mixins.btn-with-icon;
+
+  &.active {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  width: 100%;
+}

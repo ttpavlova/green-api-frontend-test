@@ -1,0 +1,9 @@
+.homePage {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 77px min-content 1fr;
+}
+
+.main {
+  background-color: var(--bg-surface);
+}

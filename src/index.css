@@ -1,75 +1,66 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --font:
+    -apple-system, BlinkMacSystemFont, "Roboto", system-ui, Avenir, Helvetica,
+    Arial, sans-serif;
+  --font-header-size: 24px;
+  --font-header-line-height: 28px;
+  --font-header-letter-spacing: 0px;
+  --font-body-size: 16px;
+  --font-body-line-height: 20px;
+  --font-body-letter-spacing: 0.15px;
+  --font-detail-size: 15px;
+  --font-detail-line-height: 20px;
+  --font-detail-letter-spacing: 0.15px;
+  --font-description-size: 13px;
+  --font-description-line-height: 16px;
+  --font-description-letter-spacing: 0.2px;
+  --font-tag-size: 11px;
+  --font-tag-line-height: 16px;
+  --font-tag-letter-spacing: 0.3px;
 
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
-  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --spacing-l: 16px;
+  --spacing-m: 12px;
+  --spacing-s: 8px;
+  --spacing-xs: 4px;
+  --spacing-2xs: 2px;
+  --text-primary: #060708;
+  --text-tertiary: rgba(6, 7, 8, 0.522);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --background-primary: #fff;
+  --button-primary: #007aff;
+  --states-button-primary-hover: #479fff;
+  --states-button-primary-pressed: #006ee5;
+  --button-secondary: color-mix(in srgb, var(--text-primary) 52%, transparent);
+  --states-button-secondary-hover: color-mix(
+    in srgb,
+    var(--text-primary) 72%,
+    transparent
+  );
+  --states-button-secondary-active: var(--text-primary);
+  --states-button-ghost-hover: #0d0d0d0a;
+  --states-button-ghost-pressed: #0d0d0d14;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --states-background-card-hover: #f6f6f6;
+  --states-background-card-selected: #007aff14;
+
+  --bg-primary: #fff;
+  --bg-secondary: #8ec4fe;
+  --bg-surface: #edeef2;
+
+  --divider-primary: #0c0d0e29;
+  --divider-secondary: #0c0d0e0f;
+
+  font-family: var(--font);
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   min-height: 100svh;
-  display: flex;
-  flex-direction: column;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
   margin: 0;
 }

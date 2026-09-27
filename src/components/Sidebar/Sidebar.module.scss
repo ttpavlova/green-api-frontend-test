@@ -1,0 +1,41 @@
+@use "../../styles/mixins" as mixins;
+
+.aside {
+  border-right: 1px solid var(--divider-secondary);
+  background: var(--bg-primary);
+}
+
+.asideWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 393px;
+  min-width: 86px;
+  max-width: calc(50vw - 48px);
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-l);
+}
+
+.title {
+  font: 600 var(--font-header-size) / var(--font-header-line-height) var(--font);
+  letter-spacing: var(--font-header-letter-spacing);
+}
+
+.addButton {
+  @include mixins.btn-primary;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 14px;
+}
+
+.icon {
+  transform: rotate(45deg);
+  color: #fff;
+}

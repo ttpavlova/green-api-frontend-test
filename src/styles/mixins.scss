@@ -1,0 +1,32 @@
+@mixin btn-with-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  width: 100%;
+  padding: var(--spacing-s) var(--spacing-2xs);
+  font-size: var(--font-tag-size);
+  font-weight: 400;
+  line-height: var(--font-tag-line-height);
+  letter-spacing: var(--font-tag-letter-spacing);
+  color: var(--button-secondary);
+  transition: color 0.1s ease;
+
+  &:hover:not(.active) {
+    color: var(--states-button-secondary-hover);
+  }
+}
+
+@mixin btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--button-primary);
+  transition: background 0.1s ease;
+
+  &:hover:not(.active) {
+    background: var(--states-button-primary-hover);
+  }
+}
