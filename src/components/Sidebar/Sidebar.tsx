@@ -8,12 +8,14 @@ interface SidebarProps {
   activeTab: TabType;
   activeChat: number | null;
   setActiveChat: React.Dispatch<React.SetStateAction<number | null>>;
+  openModal: () => void;
 }
 
 export const Sidebar = ({
   activeTab,
   activeChat,
   setActiveChat,
+  openModal,
 }: SidebarProps) => {
   const itemsList = test.map((item) => (
     <ChatCard
@@ -35,7 +37,7 @@ export const Sidebar = ({
         <div className={styles.header}>
           <h2 className={styles.title}>{titleMap[activeTab]}</h2>
           {activeTab === "chats" && (
-            <button className={styles.addButton}>
+            <button className={styles.addButton} onClick={openModal}>
               <RxCross2 className={styles.icon} size={16} strokeWidth={0.5} />
             </button>
           )}

@@ -3,6 +3,7 @@
     -apple-system, BlinkMacSystemFont, "Roboto", system-ui, Avenir, Helvetica,
     Arial, sans-serif;
   --font-header-size: 24px;
+  --font-header-weight: 600;
   --font-header-line-height: 28px;
   --font-header-letter-spacing: 0px;
   --font-body-size: 16px;
@@ -30,6 +31,7 @@
   --button-primary: #007aff;
   --states-button-primary-hover: #479fff;
   --states-button-primary-pressed: #006ee5;
+  --states-button-primary-disabled: #007aff7a;
   --button-secondary: color-mix(in srgb, var(--text-primary) 52%, transparent);
   --states-button-secondary-hover: color-mix(
     in srgb,
@@ -46,6 +48,7 @@
   --bg-primary: #fff;
   --bg-secondary: #8ec4fe;
   --bg-surface: #edeef2;
+  --bg-tertiary: #0909090d;
 
   --divider-primary: #0c0d0e29;
   --divider-secondary: #0c0d0e0f;

@@ -12,8 +12,12 @@
   color: var(--button-secondary);
   transition: color 0.1s ease;
 
-  &:hover:not(.active) {
+  &:hover {
     color: var(--states-button-secondary-hover);
+  }
+
+  &:active {
+    color: var(--states-button-secondary-active);
   }
 }
 
@@ -26,7 +30,15 @@
   background: var(--button-primary);
   transition: background 0.1s ease;
 
-  &:hover:not(.active) {
+  &:hover {
     background: var(--states-button-primary-hover);
+  }
+
+  &:active {
+    background: var(--states-button-primary-pressed);
+  }
+
+  &:disabled {
+    background: var(--states-button-primary-disabled);
   }
 }
