@@ -1,5 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import styles from "./Modal.module.scss";
+import { greenApi } from "../../api/greenApi";
+import { formatPhone } from "../../helpers/validatePhone";
 
 interface ModalProps {
   isOpen: boolean;
@@ -8,6 +10,10 @@ interface ModalProps {
 
 export const Modal = ({ isOpen, onClose }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [phone, setPhone] = useState("");
+  const [error, setError] = useState<string | null>(null);
+
+  const isDisabled = phone.length < 11 || phone.length > 15;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -25,23 +31,49 @@ export const Modal = ({ isOpen, onClose }: ModalProps) => {
     };
   }, [isOpen, onClose]);
 
-  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const chatId = formatPhone(phone);
+
+    try {
+      const data = await greenApi.checkWhatsapp(chatId);
+
+      if (data && data.existsWhatsapp) {
+        console.log("Number exists", chatId);
+      } else {
+        setError("Account not found");
+      }
+    } catch (err) {
+      setError("An error occured. Try again later");
+      console.log(err);
+    }
   };
 
-  if (!isOpen) return null;
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value.replace(/\D/g, ""));
+    setError(null);
+  };
 
   return (
     <div className={styles.modal}>
       <div className={styles.content} ref={modalRef}>
         <span className={styles.title}>Search by number</span>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <input
-            type="text"
-            placeholder="+7 123 456 78 90"
-            className={styles.input}
-          />
-          <button type="submit" className={styles.btn}>
+          <div className={styles.inputWrapper}>
+            <input
+              type="text"
+              value={phone}
+              onChange={handleChange}
+              placeholder="7 123 456 78 90"
+              className={styles.input}
+            />
+            {error && <p className={styles.error}>{error}</p>}
+          </div>
+
+          <button type="submit" disabled={isDisabled} className={styles.btn}>
             Find in WhatsApp
           </button>
         </form>

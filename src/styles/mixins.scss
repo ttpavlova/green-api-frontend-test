@@ -40,5 +40,7 @@
 
   &:disabled {
     background: var(--states-button-primary-disabled);
+    color: #ffffffb8;
+    cursor: auto;
   }
 }
