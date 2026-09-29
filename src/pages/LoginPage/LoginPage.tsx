@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useChatStore } from "../../store/chatStore";
-import { getLogIn } from "../../store/selectors";
+import { getSignIn } from "../../store/selectors";
 import type { Credentials } from "../../types/types";
 import { greenApi } from "../../api/greenApi";
 import styles from "./LoginPage.module.scss";
@@ -11,7 +11,7 @@ export const LoginPage = () => {
     useState<Credentials["apiTokenInstance"]>("");
   const [error, setError] = useState<string | null>(null);
 
-  const logIn = useChatStore(getLogIn);
+  const signIn = useChatStore(getSignIn);
 
   const isButtonDisabled = !idInstance || !apiTokenInstance;
 
@@ -25,7 +25,7 @@ export const LoginPage = () => {
       );
 
       if (data && data.stateInstance === "authorized") {
-        logIn(idInstance, apiTokenInstance);
+        signIn(idInstance, apiTokenInstance);
       } else {
         setError("Account is not authorized");
       }

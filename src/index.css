@@ -39,6 +39,9 @@
     transparent
   );
   --states-button-secondary-active: var(--text-primary);
+  --button-secondary-contrast: #20366e1a;
+  --states-button-secondary-contrast-hover: #20366e14;
+  --states-button-secondary-contrast-pressed: #20366e1f;
   --states-button-ghost-hover: #0d0d0d0a;
   --states-button-ghost-pressed: #0d0d0d14;
 

@@ -39,3 +39,15 @@
   transform: rotate(45deg);
   color: #fff;
 }
+
+.settings {
+  padding: 0 var(--spacing-l);
+}
+
+.profile {
+  padding: 8px 6px;
+  font: 600 17px / 22px var(--font);
+  text-align: left;
+  background: var(--states-background-card-selected);
+  border-radius: 12px;
+}

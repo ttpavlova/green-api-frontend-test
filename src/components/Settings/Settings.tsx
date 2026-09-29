@@ -1,12 +1,15 @@
+import { useChatStore } from "../../store/chatStore";
+import { getSignOut } from "../../store/selectors";
 import styles from "./Settings.module.scss";
 
 export const Settings = () => {
+  const signOut = useChatStore(getSignOut);
+
   return (
     <div className={styles.settings}>
-      {/* <div>{credentials.idInstance}</div>
-      <div>{credentials.apiTokenInstance}</div>
-      <button onClick={onLogout}>Log Out</button> */}
-      Log Out
+      <button className={styles.signOutBtn} onClick={signOut}>
+        Sign out of profile
+      </button>
     </div>
   );
 };

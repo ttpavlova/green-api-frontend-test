@@ -1,3 +1,19 @@
+@use "../../styles/mixins" as mixins;
+
 .settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 24px;
+  height: 100%;
+}
+
+.signOutBtn {
+  @include mixins.btn-secondary;
+
+  padding: 18px 22px;
+  min-width: 64px;
+  height: 60px;
+  font: 500 17px / 20px var(--font);
+  border-radius: 20px;
 }

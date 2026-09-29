@@ -45,7 +45,11 @@ export const Sidebar = ({
 
         <div className={styles.content}>
           {activeTab === "chats" && itemsList}
-          {activeTab === "settings" && <p>settingslist</p>}
+          {activeTab === "settings" && (
+            <div className={styles.settings}>
+              <div className={styles.profile}>Profile</div>
+            </div>
+          )}
         </div>
       </aside>
     </aside>
