@@ -3,5 +3,7 @@ export const formatPhone = (phone: string) => {
     phone = "7" + phone.slice(1);
   }
 
-  return `${phone}@c.us`;
+  return phone;
 };
+
+export const getChatIdFromPhone = (phone: string) => `${phone}@c.us`;

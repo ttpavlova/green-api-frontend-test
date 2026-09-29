@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { greenApi } from "../../api/greenApi";
-import { formatPhone } from "../../helpers/validatePhone";
+import { formatPhone } from "../../helpers/formatPhone";
+import { getChatIdFromPhone } from "../../helpers/formatPhone";
+import { useChatStore } from "../../store/chatStore";
+import { getAddChat } from "../../store/selectors";
+import { useNavigate } from "react-router";
 import styles from "./Modal.module.scss";
 
 interface ModalProps {
@@ -12,6 +16,9 @@ export const Modal = ({ isOpen, onClose }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  const addChat = useChatStore(getAddChat);
+  const navigate = useNavigate();
 
   const isDisabled = phone.length < 11 || phone.length > 15;
 
@@ -36,13 +43,16 @@ export const Modal = ({ isOpen, onClose }: ModalProps) => {
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const chatId = formatPhone(phone);
+    const formattedPhone = formatPhone(phone);
+    const chatId = getChatIdFromPhone(formattedPhone);
 
     try {
       const data = await greenApi.checkWhatsapp(chatId);
 
       if (data && data.existsWhatsapp) {
-        console.log("Number exists", chatId);
+        addChat(chatId);
+        onClose();
+        navigate(`/${formattedPhone}`);
       } else {
         setError("Account not found");
       }

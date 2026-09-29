@@ -26,6 +26,7 @@
   --spacing-2xs: 2px;
   --text-primary: #060708;
   --text-tertiary: rgba(6, 7, 8, 0.522);
+  --text-error: #e91b1b;
 
   --background-primary: #fff;
   --button-primary: #007aff;

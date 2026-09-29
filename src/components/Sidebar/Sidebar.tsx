@@ -1,31 +1,15 @@
-import { ChatCard } from "../ChatCard/ChatCard";
 import { RxCross2 } from "react-icons/rx";
-import { test } from "../../data/data";
 import type { TabType } from "../../types/types";
+import { ChatList } from "../ChatsList/ChatsList";
 import styles from "./Sidebar.module.scss";
 
 interface SidebarProps {
   activeTab: TabType;
-  activeChat: number | null;
-  setActiveChat: React.Dispatch<React.SetStateAction<number | null>>;
+  activeChat: string | undefined;
   openModal: () => void;
 }
 
-export const Sidebar = ({
-  activeTab,
-  activeChat,
-  setActiveChat,
-  openModal,
-}: SidebarProps) => {
-  const itemsList = test.map((item) => (
-    <ChatCard
-      key={item.id}
-      item={item}
-      activeChat={activeChat}
-      setActiveChat={setActiveChat}
-    />
-  ));
-
+export const Sidebar = ({ activeTab, activeChat, openModal }: SidebarProps) => {
   const titleMap = {
     chats: "Chats",
     settings: "Settings",
@@ -44,7 +28,7 @@ export const Sidebar = ({
         </div>
 
         <div className={styles.content}>
-          {activeTab === "chats" && itemsList}
+          {activeTab === "chats" && <ChatList activeChat={activeChat} />}
           {activeTab === "settings" && (
             <div className={styles.settings}>
               <div className={styles.profile}>Profile</div>

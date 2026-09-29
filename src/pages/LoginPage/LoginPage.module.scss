@@ -30,6 +30,11 @@
   border-radius: 16px;
 }
 
+.error {
+  font-size: 14px;
+  color: var(--text-error);
+}
+
 .btn {
   @include mixins.btn-primary;
 

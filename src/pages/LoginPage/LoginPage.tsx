@@ -30,7 +30,7 @@ export const LoginPage = () => {
         setError("Account is not authorized");
       }
     } catch (err) {
-      setError("An error occured. Try again later");
+      setError("Incorrect credentials");
       console.log(err);
     }
   };

@@ -6,11 +6,12 @@ import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { OpenedChat } from "../../components/OpenedChat/OpenedChat";
 import { Modal } from "../../components/Modal/Modal";
 import styles from "./HomePage.module.scss";
+import { useParams } from "react-router";
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<TabType>("chats");
-  const [activeChat, setActiveChat] = useState<number | null>(null);
   const [isModalOpen, setModalOpen] = useState(false);
+  const { chatId } = useParams();
 
   return (
     <div className={styles.homePage}>
@@ -18,15 +19,12 @@ export const HomePage = () => {
 
       <Sidebar
         activeTab={activeTab}
-        activeChat={activeChat}
-        setActiveChat={setActiveChat}
+        activeChat={chatId}
         openModal={() => setModalOpen(true)}
       />
 
       <main className={styles.main}>
-        {activeTab === "chats" && activeChat && (
-          <OpenedChat activeChat={activeChat} />
-        )}
+        {activeTab === "chats" && chatId && <OpenedChat activeChat={chatId} />}
         {activeTab === "settings" && <Settings />}
       </main>
 

@@ -2,40 +2,25 @@ import { useNavigate } from "react-router";
 import styles from "./ChatCard.module.scss";
 import cn from "classnames";
 
-interface Item {
-  id: number;
-  title: string;
-  text: string;
-  meta: string;
-}
-
 interface ChatCardProps {
-  item: Item;
-  activeChat: number | null;
-  setActiveChat: React.Dispatch<React.SetStateAction<number | null>>;
+  item: string;
+  isActive: boolean;
 }
 
-export const ChatCard = ({
-  item,
-  activeChat,
-  setActiveChat,
-}: ChatCardProps) => {
+export const ChatCard = ({ item, isActive }: ChatCardProps) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    setActiveChat(item.id);
-    navigate(`${item.id}`);
+    navigate(`${item}`);
   };
 
   return (
-    <div
-      className={cn(styles.card, { [styles.selected]: item.id === activeChat })}
-    >
+    <div className={cn(styles.card, { [styles.selected]: isActive })}>
       <button className={styles.cardBtn} onClick={handleClick}>
         <div className={styles.avatar}></div>
-        <h3 className={styles.title}>{item.title}</h3>
-        <span className={styles.text}>{item.text}</span>
-        <div className={styles.meta}>{item.meta}</div>
+        <h3 className={styles.title}>{item}</h3>
+        {/* <span className={styles.text}>{item.text}</span>
+        <div className={styles.meta}>{item.meta}</div> */}
       </button>
     </div>
   );
