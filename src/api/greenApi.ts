@@ -1,4 +1,5 @@
 import { request } from "../helpers/request";
+import type { Credentials } from "../types/types";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 const idInstance = import.meta.env.VITE_ID_INSTANCE;
@@ -25,6 +26,15 @@ export const greenApi = {
     return request(
       `${apiUrl}/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${receiptId}`,
       { method: "DELETE" },
+    );
+  },
+
+  getStateInstance: (
+    idInstance: Credentials["idInstance"],
+    apiTokenInstance: Credentials["apiTokenInstance"],
+  ) => {
+    return request(
+      `${apiUrl}/waInstance${idInstance}/getStateInstance/${apiTokenInstance}`,
     );
   },
 

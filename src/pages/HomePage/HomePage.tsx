@@ -24,7 +24,9 @@ export const HomePage = () => {
       />
 
       <main className={styles.main}>
-        {activeTab === "chats" && <OpenedChat activeChat={activeChat} />}
+        {activeTab === "chats" && activeChat && (
+          <OpenedChat activeChat={activeChat} />
+        )}
         {activeTab === "settings" && <Settings />}
       </main>
 

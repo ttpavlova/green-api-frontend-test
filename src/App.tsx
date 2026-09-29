@@ -1,23 +1,16 @@
-import { useState } from "react";
-import { LoginPage } from "./pages/LoginPage/LoginPage";
-import { HomePage } from "./pages/HomePage/HomePage";
-import type { Credentials } from "./types/types";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import "./App.scss";
 
 function App() {
-  const [credentials, setCredentials] = useState<Credentials | null>(null);
-
   return (
-    <div className="appContainer">
-      {!credentials ? (
-        <LoginPage onLogin={setCredentials} />
-      ) : (
-        <HomePage
-        // credentials={credentials}
-        // onLogout={() => setCredentials(null)}
-        />
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ProtectedRoutes />} />
+        <Route path="/:chatId" element={<ProtectedRoutes />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
-import styles from "./Modal.module.scss";
 import { greenApi } from "../../api/greenApi";
 import { formatPhone } from "../../helpers/validatePhone";
+import styles from "./Modal.module.scss";
 
 interface ModalProps {
   isOpen: boolean;
@@ -54,7 +54,9 @@ export const Modal = ({ isOpen, onClose }: ModalProps) => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPhone(e.target.value.replace(/\D/g, ""));
-    setError(null);
+    if (error) {
+      setError(null);
+    }
   };
 
   return (

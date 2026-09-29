@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import styles from "./ChatCard.module.scss";
 import cn from "classnames";
 
@@ -19,11 +20,18 @@ export const ChatCard = ({
   activeChat,
   setActiveChat,
 }: ChatCardProps) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    setActiveChat(item.id);
+    navigate(`${item.id}`);
+  };
+
   return (
     <div
       className={cn(styles.card, { [styles.selected]: item.id === activeChat })}
     >
-      <button className={styles.cardBtn} onClick={() => setActiveChat(item.id)}>
+      <button className={styles.cardBtn} onClick={handleClick}>
         <div className={styles.avatar}></div>
         <h3 className={styles.title}>{item.title}</h3>
         <span className={styles.text}>{item.text}</span>
