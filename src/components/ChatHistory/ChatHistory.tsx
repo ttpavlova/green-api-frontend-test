@@ -24,5 +24,5 @@ export const ChatHistory = ({ activeChat }: ChatHistoryProps) => {
     </div>
   ));
 
-  return <>{items}</>;
+  return <div className={styles.history}>{items}</div>;
 };

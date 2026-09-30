@@ -1,7 +1,7 @@
 @use "../../styles/mixins" as mixins;
 
 .formWrapper {
-  background: var(--background-primary);
+  background: var(--bg-primary);
   border-radius: 16px;
 }
 
@@ -11,6 +11,9 @@
   gap: 10px;
   padding: 8px 12px;
   min-height: 48px;
+  box-shadow:
+    0px 4px 16px 0px #00000014,
+    0px 0px 2px 0px #00000014;
 }
 
 .textarea {
@@ -18,7 +21,7 @@
   height: 100%;
   font: 400 var(--font-body-size) / var(--font-body-line-height) var(--font);
   letter-spacing: var(--font-body-letter-spacing);
-  background: var(--background-primary);
+  background: var(--bg-primary);
   border: none;
   resize: none;
 }
