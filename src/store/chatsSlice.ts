@@ -17,11 +17,19 @@ export const createChatsSlice: StateCreator<ChatsSlice> = (set) => ({
       },
     }));
   },
-  updateChatHistory: (chatId, message) =>
-    set((state) => ({
-      chats: {
-        ...state.chats,
-        [chatId]: [...state.chats[chatId], message],
-      },
-    })),
+  updateChatHistory: (chatId, newMessage) =>
+    set((state) => {
+      const messages = state.chats[chatId] ?? [];
+
+      if (messages.some((m) => m.id === newMessage.id)) {
+        return state;
+      }
+
+      return {
+        chats: {
+          ...state.chats,
+          [chatId]: [...messages, newMessage],
+        },
+      };
+    }),
 });

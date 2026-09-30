@@ -1,13 +1,13 @@
-import { useChatStore } from "./chatStore";
+import type { ChatStore, Message } from "./types";
 
-export const getIsAuth = () => useChatStore.getState().isAuth;
-export const getIdInstance = () => useChatStore.getState().idInstance;
-export const getApiTokenInstance = () =>
-  useChatStore.getState().apiTokenInstance;
-export const getSignIn = () => useChatStore.getState().signIn;
-export const getSignOut = () => useChatStore.getState().signOut;
-
-export const getAddChat = () => useChatStore.getState().addChat;
-export const getChats = () => useChatStore.getState().chats;
-export const getUpdateChatHistory = () =>
-  useChatStore.getState().updateChatHistory;
+export const selectIsAuth = (state: ChatStore) => state.isAuth;
+export const selectSignIn = (state: ChatStore) => state.signIn;
+export const selectSignOut = (state: ChatStore) => state.signOut;
+export const selectAddChat = (state: ChatStore) => state.addChat;
+export const selectChats = (state: ChatStore) => state.chats;
+export const selectUpdateChatHistory = (state: ChatStore) =>
+  state.updateChatHistory;
+export const selectChatMessages =
+  (chatId: string) =>
+  (state: ChatStore): Message[] =>
+    state.chats[chatId] ?? [];

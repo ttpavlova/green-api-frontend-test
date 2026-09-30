@@ -1,5 +1,5 @@
 import { useChatStore } from "../../store/chatStore";
-import { getChats } from "../../store/selectors";
+import { selectChats } from "../../store/selectors";
 import { ChatCard } from "../ChatCard/ChatCard";
 
 interface ChatListProps {
@@ -7,7 +7,7 @@ interface ChatListProps {
 }
 
 export const ChatList = ({ activeChat }: ChatListProps) => {
-  const chats = useChatStore(getChats);
+  const chats = useChatStore(selectChats);
   const chatIds = Object.keys(chats);
 
   const chatList = chatIds.map((item) => (

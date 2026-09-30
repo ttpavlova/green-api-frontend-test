@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { greenApi } from "../api/greenApi";
 import { useChatStore } from "../store/chatStore";
-import { getUpdateChatHistory } from "../store/selectors";
+import { selectUpdateChatHistory } from "../store/selectors";
 import { getMessageTypeByWebhookType } from "../helpers/getMessageTypeByWebhookType";
 
 export const usePolling = () => {
-  const updateChatHistory = useChatStore(getUpdateChatHistory);
+  const updateChatHistory = useChatStore(selectUpdateChatHistory);
 
   useEffect(() => {
     const interval = setInterval(async () => {

@@ -3,7 +3,7 @@ import { greenApi } from "../../api/greenApi";
 import { formatPhone } from "../../helpers/formatPhone";
 import { getChatIdFromPhone } from "../../helpers/formatPhone";
 import { useChatStore } from "../../store/chatStore";
-import { getAddChat } from "../../store/selectors";
+import { selectAddChat } from "../../store/selectors";
 import { useNavigate } from "react-router";
 import styles from "./Modal.module.scss";
 
@@ -17,7 +17,7 @@ export const Modal = ({ isOpen, onClose }: ModalProps) => {
   const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const addChat = useChatStore(getAddChat);
+  const addChat = useChatStore(selectAddChat);
   const navigate = useNavigate();
 
   const isDisabled = phone.length < 11 || phone.length > 15;

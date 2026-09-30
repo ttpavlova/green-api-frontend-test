@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { ChatInput } from "../ChatInput/ChatInput";
+import { ChatHistory } from "../ChatHistory/ChatHistory";
 import { IoArrowBack } from "react-icons/io5";
 import styles from "./OpenedChat.module.scss";
 
@@ -25,7 +26,9 @@ export const OpenedChat = ({ activeChat }: OpenedChatProps) => {
       </div>
 
       <div className={styles.history}>
-        <div className={styles.scrollable} />
+        <div className={styles.scrollable}>
+          <ChatHistory activeChat={activeChat} />
+        </div>
         <div className={styles.inputWrapper}>
           <ChatInput activeChat={activeChat} />
         </div>

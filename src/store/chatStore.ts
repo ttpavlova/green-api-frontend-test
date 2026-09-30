@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import { persist, devtools } from "zustand/middleware";
+import { createAuthSlice } from "./authSlice";
+import { createChatsSlice } from "./chatsSlice";
+import type { ChatStore } from "./types";
 
-import { createAuthSlice, type AuthSlice } from "./authSlice";
-import { createChatsSlice, type ChatsSlice } from "./chatsSlice";
-
-export const useChatStore = create<AuthSlice & ChatsSlice>()(
+export const useChatStore = create<ChatStore>()(
   devtools(
     persist(
       (...args) => ({

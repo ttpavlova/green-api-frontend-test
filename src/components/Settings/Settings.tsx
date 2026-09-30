@@ -1,9 +1,9 @@
 import { useChatStore } from "../../store/chatStore";
-import { getSignOut } from "../../store/selectors";
+import { selectSignOut } from "../../store/selectors";
 import styles from "./Settings.module.scss";
 
 export const Settings = () => {
-  const signOut = useChatStore(getSignOut);
+  const signOut = useChatStore(selectSignOut);
 
   return (
     <div className={styles.settings}>

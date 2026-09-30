@@ -1,0 +1,23 @@
+.item {
+  width: 100%;
+}
+
+.bubbleWrapper {
+  display: flex;
+  max-width: 732px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  &.outgoing {
+    flex-direction: row-reverse;
+  }
+}
+
+.bubble {
+  max-width: 70%;
+  margin: 4px 0;
+  padding: 8px;
+  background: var(--bubbles-background);
+  border-radius: 16px;
+}
