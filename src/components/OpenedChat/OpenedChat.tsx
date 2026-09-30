@@ -27,7 +27,7 @@ export const OpenedChat = ({ activeChat }: OpenedChatProps) => {
       <div className={styles.history}>
         <div className={styles.scrollable} />
         <div className={styles.inputWrapper}>
-          <ChatInput />
+          <ChatInput activeChat={activeChat} />
         </div>
       </div>
     </div>

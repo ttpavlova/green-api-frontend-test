@@ -1,8 +1,14 @@
 import { IoArrowUp } from "react-icons/io5";
 import { useRef, useState } from "react";
 import styles from "./ChatInput.module.scss";
+import { greenApi } from "../../api/greenApi";
+import { getChatIdFromPhone } from "../../helpers/formatPhone";
 
-export const ChatInput = () => {
+interface ChatInputProps {
+  activeChat: string;
+}
+
+export const ChatInput = ({ activeChat }: ChatInputProps) => {
   const [text, setText] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -21,12 +27,13 @@ export const ChatInput = () => {
     resizeTextarea();
   };
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     const message = text.trim();
 
     if (!message) return;
 
-    console.log("Message is ", message);
+    const chatId = getChatIdFromPhone(activeChat);
+    await greenApi.sendMessage(chatId, message);
 
     setText("");
 

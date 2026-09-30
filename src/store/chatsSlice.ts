@@ -18,9 +18,10 @@ export const createChatsSlice: StateCreator<ChatsSlice> = (set) => ({
     }));
   },
   updateChatHistory: (chatId, message) =>
-    set((state) => {
-      const chatHistoryById = { ...state.chats[chatId] };
-      const updatedChatHistory = [...chatHistoryById, message];
-      return { ...state.chats, [chatId]: updatedChatHistory };
-    }),
+    set((state) => ({
+      chats: {
+        ...state.chats,
+        [chatId]: [...state.chats[chatId], message],
+      },
+    })),
 });

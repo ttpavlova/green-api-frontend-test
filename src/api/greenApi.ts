@@ -1,12 +1,13 @@
+import { getCredentials } from "../helpers/getCredentials";
 import { request } from "../helpers/request";
 import type { Credentials } from "../types/types";
 
 const apiUrl = import.meta.env.VITE_API_URL;
-const idInstance = import.meta.env.VITE_ID_INSTANCE;
-const apiTokenInstance = import.meta.env.VITE_API_TOKEN_INSTANCE;
 
 export const greenApi = {
   sendMessage: (chatId: string, message: string) => {
+    const { idInstance, apiTokenInstance } = getCredentials();
+
     return request(
       `${apiUrl}/waInstance${idInstance}/sendMessage/${apiTokenInstance}`,
       {
@@ -17,12 +18,16 @@ export const greenApi = {
   },
 
   receiveNotification: () => {
+    const { idInstance, apiTokenInstance } = getCredentials();
+
     return request(
       `${apiUrl}/waInstance${idInstance}/receiveNotification/${apiTokenInstance}`,
     );
   },
 
   deleteNotification: (receiptId: number) => {
+    const { idInstance, apiTokenInstance } = getCredentials();
+
     return request(
       `${apiUrl}/waInstance${idInstance}/deleteNotification/${apiTokenInstance}/${receiptId}`,
       { method: "DELETE" },
@@ -39,6 +44,8 @@ export const greenApi = {
   },
 
   checkWhatsapp: (chatId: string) => {
+    const { idInstance, apiTokenInstance } = getCredentials();
+
     return request(
       `${apiUrl}/waInstance${idInstance}/checkWhatsapp/${apiTokenInstance}`,
       { method: "POST", body: JSON.stringify({ chatId }) },
@@ -46,6 +53,8 @@ export const greenApi = {
   },
 
   getChatHistory: (chatId: string, count = 10) => {
+    const { idInstance, apiTokenInstance } = getCredentials();
+
     return request(
       `${apiUrl}/waInstance${idInstance}/getChatHistory/${apiTokenInstance}`,
       {
