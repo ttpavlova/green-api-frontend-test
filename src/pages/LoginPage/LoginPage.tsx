@@ -60,7 +60,7 @@ export const LoginPage = () => {
           disabled={isButtonDisabled}
           className={styles.btn}
         >
-          Log In
+          Sign In
         </button>
       </form>
     </div>
